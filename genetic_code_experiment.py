@@ -125,7 +125,21 @@ def plot_probs(iter_num):
                             codon_classes.index(codon_table[codons[i + j]]))
 
     fig.suptitle("Amino Acid Probabilities - Iteration " + str(iter_num), fontsize=24)
-    fig.savefig("./_images/" + str(iter_num) + ".png")
+    fig.savefig("./_images/aa_prob_" + str(iter_num) + ".png")
+
+    plt.close()
+
+
+def plot_weights(iter_num):
+
+    idx = np.arange(len(codon_classes))
+
+    plt.imshow(single_neuron.get_weights(), cmap='GnBu', interpolation='nearest')
+
+    plt.xticks(idx, codon_classes)
+    plt.title("Weight Matrix - Iteration " + str(iter_num))
+
+    plt.savefig("./_images/weights_" + str(iter_num) + ".png")
 
     plt.close()
 
@@ -153,14 +167,13 @@ init_weights = np.matrix([
 
 single_neuron = Neuron(init_weights)
 
-plot_probs(0)
-
 print test_neuron_accuracy(single_neuron)
 
 losses = []
 
 for i in range(30):
     plot_probs(i + 1)
+    plot_weights(i + 1)
     for cod in codon_table.keys():
         loss = objective_function(single_neuron,
                                   np.matrix(convert_codon_to_bits(cod)),

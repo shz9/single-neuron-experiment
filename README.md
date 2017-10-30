@@ -1,7 +1,9 @@
 Testing the learning capacity of a single neuron
 ===
 
-![Alt text](/_images/single_neuron_learning.gif?raw=true "Title")
+![Alt text](/_images/single_neuron_learning.gif?raw=true "AA Probabilities")
+
+![Alt text](/_images/weight_matrix_adj.gif?raw=true "Weight Matrix")
 
 This repo contains an implementation of a single artificial neuron as well as a
 module that's used to test its capacity to learn the genetic code. I was inspired 
